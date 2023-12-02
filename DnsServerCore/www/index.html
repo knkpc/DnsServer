@@ -778,28 +778,21 @@
 
                                 </div>
 
-                                <div id="mainPanelTabPaneAllowedZones" role="tabpanel" class="tab-pane"
-                                    style="padding: 10px 0 0 0;">
+                                <div id="mainPanelTabPaneAllowedZones" role="tabpanel" class="tab-pane" style="padding: 10px 0 0 0;">
 
                                     <div class="well well-sm zone-list-pane">
                                         <form class="form-inline">
                                             <div class="form-group" style="width: 100%">
-                                                <input type="text" class="form-control" style="width: inherit;"
-                                                    id="txtAllowZone" placeholder="example.com">
+                                                <input type="text" class="form-control" style="width: inherit;" id="txtAllowZone" placeholder="example.com">
                                             </div>
-                                            <!-- Inserted comments textarea below -->
-                                            <div class="form-group" style="width: 100%; margin-top: 10px;">
-                                                <label for="txtZoneComments" class="control-label">Comments:</label>
-                                                <textarea id="txtZoneComments" class="form-control" rows="3"
-                                                    placeholder="Enter comments for the allowed zone here..."></textarea>
-                                            </div>
+											<!-- Inserted comments textarea below -->
+            <div class="form-group" style="width: 100%; margin-top: 10px;">
+                <label for="txtAllowZoneComments" class="control-label">Comments:</label>
+                <textarea id="txtAllowZoneComments" class="form-control" rows="3" placeholder="Enter comments for the allowed zone here..."></textarea>
+            </div>
                                             <div class="form-group">
-                                                <button id="btnAllowZone" type="submit" class="btn btn-primary"
-                                                    data-loading-text="Allow"
-                                                    onclick="allowZone(); return false;">Allow</button>
-                                                <button id="btnBrowseAllowZone" type="button" class="btn btn-default"
-                                                    data-loading-text="Browse"
-                                                    onclick="refreshAllowedZonesList($('#txtAllowZone').val());">Browse</button>
+                                                <button id="btnAllowZone" type="submit" class="btn btn-primary" data-loading-text="Allow" onclick="allowZone(); return false;">Allow</button>
+                                                <button id="btnBrowseAllowZone" type="button" class="btn btn-default" data-loading-text="Browse" onclick="refreshAllowedZonesList($('#txtAllowZone').val());">Browse</button>
                                             </div>
                                         </form>
 
@@ -810,31 +803,18 @@
                                     <div id="divAllowedZoneViewer" class="zone-viewer-pane">
                                         <div class="panel panel-default">
                                             <div class="panel-heading" style="height: 36px; padding: 4px 6px;">
-                                                <div id="txtAllowedZoneViewerTitle" style="float: left; padding: 4px;">
-                                                    technitium.com</div>
+                                                <div id="txtAllowedZoneViewerTitle" style="float: left; padding: 4px;">technitium.com</div>
                                                 <div style="float: right;">
-                                                    <button type="button" class="btn btn-default"
-                                                        data-loading-text="Import"
-                                                        onclick="resetImportAllowedZonesModal();" data-toggle="modal"
-                                                        data-target="#modalImportAllowedZones"
-                                                        style="font-size: 12px; padding: 4px 6px;">Import</button>
-                                                    <button type="button" class="btn btn-default"
-                                                        data-loading-text="Export" onclick="exportAllowedZones();"
-                                                        style="font-size: 12px; padding: 4px 6px;">Export</button>
-                                                    <button id="btnDeleteAllowedZone" type="button"
-                                                        class="btn btn-warning" data-loading-text="Delete"
-                                                        onclick="deleteAllowedZone();"
-                                                        style="font-size: 12px; padding: 4px 6px;">Delete</button>
-                                                    <button id="btnFlushAllowedZone" type="button"
-                                                        class="btn btn-danger" data-loading-text="Flush"
-                                                        onclick="flushAllowedZone();"
-                                                        style="font-size: 12px; padding: 4px 6px;">Flush</button>
+                                                    <button type="button" class="btn btn-default" data-loading-text="Import" onclick="resetImportAllowedZonesModal();" data-toggle="modal" data-target="#modalImportAllowedZones" style="font-size: 12px; padding: 4px 6px;">Import</button>
+                                                    <button type="button" class="btn btn-default" data-loading-text="Export" onclick="exportAllowedZones();" style="font-size: 12px; padding: 4px 6px;">Export</button>
+                                                    <button id="btnDeleteAllowedZone" type="button" class="btn btn-warning" data-loading-text="Delete" onclick="deleteAllowedZone();" style="font-size: 12px; padding: 4px 6px;">Delete</button>
+                                                    <button id="btnFlushAllowedZone" type="button" class="btn btn-danger" data-loading-text="Flush" onclick="flushAllowedZone();" style="font-size: 12px; padding: 4px 6px;">Flush</button>
                                                 </div>
                                             </div>
 
                                             <div class="panel-body">
                                                 <pre id="preAllowedZoneViewerBody">
-
+                                                    
                                                 </pre>
                                             </div>
                                         </div>
