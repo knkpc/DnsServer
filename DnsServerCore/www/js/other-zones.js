@@ -161,8 +161,14 @@ function allowZone() {
         return;
     }
 
-    var btn = $("#btnAllowZone").button('loading');
-
+   // Save the comment to local storage before sending the allow request
+    var comments = $("#txtAllowZoneComments").val(); // Make sure this ID matches your textarea for comments
+    localStorage.setItem(domain, comments); // Use the domain as the key for the comment
+    $("#txtAllowZoneComments").val(''); // Clear the comments textarea 
+	
+	var btn = $("#btnAllowZone").button('loading');
+	
+ // Proceed with the HTTP request to allow the domain
     HTTPRequest({
         url: "/api/allowed/add?token=" + sessionData.token + "&domain=" + domain,
         success: function (responseJSON) {
@@ -264,8 +270,15 @@ function refreshAllowedZonesList(domain, direction) {
 
             for (var i = 0; i < zones.length; i++) {
                 var zoneName = htmlEncode(zones[i]);
+				
+				// Retrieve the comment for the domain from local storage
+				var comment = localStorage.getItem(zoneName) || "No comment provided";
 
-                list += "<div class=\"zone\"><a href=\"#\" onclick=\"refreshAllowedZonesList('" + zoneName + "'); return false;\">" + zoneName + "</a></div>";
+                // Add the domain name and its comment to the list
+                list += "<div class=\"zone\">" +
+                        "<a href=\"#\" onclick=\"refreshAllowedZonesList('" + zoneName + "'); return false;\">" +
+                        zoneName +
+                        "</a> - <span class=\"comment\">" + comment + "</span></div>";
             }
 
             lstAllowedZones.html(list);
@@ -310,6 +323,11 @@ function blockZone() {
         $("#txtBlockZone").focus();
         return;
     }
+	// Save the comment to local storage before sending the block request
+    var comments = $("#txtBlockZoneComments").val(); // Make sure this ID matches your textarea for comments
+    localStorage.setItem(domain, comments); // Use the domain as the key for the comment
+    $("#txtBlockZoneComments").val(''); // Clear the comments textarea
+
 
     var btn = $("#btnBlockZone").button('loading');
 
@@ -414,8 +432,15 @@ function refreshBlockedZonesList(domain, direction) {
 
             for (var i = 0; i < zones.length; i++) {
                 var zoneName = htmlEncode(zones[i]);
-
-                list += "<div class=\"zone\"><a href=\"#\" onclick=\"refreshBlockedZonesList('" + zoneName + "'); return false;\">" + zoneName + "</a></div>";
+				
+				// Retrieve the comment for the domain from local storage
+                var comment = localStorage.getItem(zoneName) || "No comment provided";
+				
+                // Add the domain name and its comment to the list
+                list += "<div class=\"zone\">" +
+                        "<a href=\"#\" onclick=\"refreshBlockedZonesList('" + zoneName + "'); return false;\">" +
+                        zoneName +
+                        "</a> - <span class=\"comment\">" + comment + "</span></div>";
             }
 
             lstBlockedZones.html(list);
